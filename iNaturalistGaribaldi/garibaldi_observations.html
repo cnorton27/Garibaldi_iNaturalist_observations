@@ -157,7 +157,7 @@
         mapboxgl.accessToken = 'pk.eyJ1Ijoibm9ydG9uMjciLCJhIjoiY2xoam9hNHI5MGpuMjNscWtlcTF2dTN3dyJ9.xx0qCx-woV7mYFkrMNQmiA';
         const map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/norton27/clt6q7cpd00g601o8dhbr3nvw', //insert style here, here are some pre-set options https://docs.mapbox.com/api/maps/styles/
+            style: 'mapbox://styles/norton27/cltxyo1e701ua01ra1n2rh67x', //insert style here, here are some pre-set options https://docs.mapbox.com/api/maps/styles/
             center: [-123.16761577284362, 49.68914344599266], //insert coordinates here
             zoom: 9,
             pitch: 60,
@@ -199,7 +199,7 @@
 
             map.addSource('plants_data', {
                 type: 'geojson',
-                data: 'https://raw.githubusercontent.com/cnorton27/Squamish_plants_map/main/withID.geojson' // Replace with the URL of your GeoJSON data
+                data: 'https://raw.githubusercontent.com/cnorton27/Garibaldi_iNaturalist_observations/main/iNaturalistGaribaldi/iNaturalist_observations/iNaturalist_observations.geojson?token=GHSAT0AAAAAACMXV7FZQ64EEM7UANYLPWQWZPZFR6Q' // Replace with the URL of your GeoJSON data
             });
 
             map.addLayer({
@@ -312,7 +312,7 @@
                     }
 
                     // set filter for highlighted plants layer, uses ID property to ensure no duplicates
-                    const coords = features.map((feature) => feature.properties.ID);
+                    const coords = features.map((feature) => feature.properties.id);
                     map.setFilter('highlighted-plants', ['in', 'ID', ...coords]);
                 }
 
@@ -397,7 +397,7 @@
                 const ID = document.createElement('div');
                 ID.textContent =
                     'Total plants:' + " " +
-                    feature.properties.species_count
+                    feature.properties.scientific//change later
 
                 overlay.innerHTML = '';
                 overlay.style.display = 'block';
